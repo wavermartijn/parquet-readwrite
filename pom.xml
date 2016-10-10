@@ -12,6 +12,7 @@
     <parquet.version>1.8.1</parquet.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <org.slf4j-version>1.6.6</org.slf4j-version>
   </properties>
   <dependencies>
     <dependency>
@@ -29,7 +30,11 @@
       <artifactId>lombok</artifactId>
       <version>1.16.8</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${org.slf4j-version}</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.parquet</groupId>
       <artifactId>parquet-common</artifactId>
@@ -88,7 +93,7 @@
           <showDeprecation>true</showDeprecation>
         </configuration>
       </plugin>
-    
+
     </plugins>
   </build>
 </project>
