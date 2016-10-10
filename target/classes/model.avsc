@@ -1,8 +1,0 @@
-{"namespace": "com.meteogroup",
- "type": "record",
- "name": "Model",
- "fields": [
-     {"name": "name", "type": "string"},
-     {"name": "type", "type": ["string", "null"]}
- ]
-}

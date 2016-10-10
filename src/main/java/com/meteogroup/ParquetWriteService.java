@@ -12,6 +12,7 @@ import org.apache.parquet.hadoop.ParquetWriter;
 import org.apache.parquet.hadoop.metadata.CompressionCodecName;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 @Service
@@ -22,26 +23,29 @@ public class ParquetWriteService {
 
   Configuration configuration = null;
 
+  @PostConstruct
+  public void initConfiguration() throws IOException {
+    configuration = retrieveConfiguration();
+  }
+
+
   public void writeExampleParquetFile() throws IOException {
+    ParquetWriter parquetWriter = initWriter(new Path("/user/maria_dev/martijn_"+System.currentTimeMillis()));
+    Model model = new Model();
+    model.name = "martijn";
+    model.type="testtype";
 
+    parquetWriter.write(model);
+    parquetWriter.close();
+  }
 
-
-
-
-    FileSystem fs = FileSystem.get(retrieveConfiguration());
-    FSDataOutputStream fdos=fs.create(new Path("/user/maria_dev/file01" + System.currentTimeMillis() + ".txt"), true);
-    fdos.writeBytes("Test text for the txt file");
-    fdos.flush();
-    fdos.close();
-    fs.close();
-//
-//    ParquetWriter parquetWriter = initWriter(new Path("/user/maria_dev/martijn_"+System.currentTimeMillis()));
-//    Model model = new Model();
-//    model.name = "martijn";
-//    model.type="testtype";
-//
-//    parquetWriter.write(model);
-//    parquetWriter.close();
+  public void writeExampleTextFile() throws IOException {
+        FileSystem fs = FileSystem.get(configuration);
+        FSDataOutputStream fdos=fs.create(new Path("/user/maria_dev/file01" + System.currentTimeMillis() + ".txt"), true);
+        fdos.writeBytes("Test text for the txt file");
+        fdos.flush();
+        fdos.close();
+        fs.close();
   }
 
 
@@ -67,13 +71,8 @@ public class ParquetWriteService {
     configuration.set("fs.defaultFS", "hdfs://sandbox.hortonworks.com:8020");
     configuration.set("fs.default.name", "hdfs://sandbox.hortonworks.com:8020");
     configuration.set("hadoop.job.ugi", "hbase");
-    //configuration.set("dfs.client.use.datanode.hostname","true");
     configuration.set("dfs.datanode.address", "sandbox.hortonworks.com:50075");
-    //configuration.set("dfs.namenode.http-address","10.0.2.255:50010");
-    //configuration.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
     configuration.set("dfs.replication","1");
-    //configuration.set("dfs.client.use.datanode.hostname", "true");
-
     return configuration;
   }
 }
