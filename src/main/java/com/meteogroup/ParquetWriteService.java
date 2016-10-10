@@ -64,15 +64,16 @@ public class ParquetWriteService {
     System.setProperty("HADOOP_USER_NAME", "hdfs");
     configuration = new Configuration();
     configuration.set(AVRO_SCHEMA, IOUtils.toString(ParquetWriteService.class.getResourceAsStream("/model.avsc")));
-    configuration.set("fs.defaultFS", "hdfs://localhost:8020");
-    configuration.set("fs.default.name", "hdfs://localhost:8020");
+    configuration.set("fs.defaultFS", "hdfs://sandbox.hortonworks.com:8020");
+    configuration.set("fs.default.name", "hdfs://sandbox.hortonworks.com:8020");
     configuration.set("hadoop.job.ugi", "hbase");
     //configuration.set("dfs.client.use.datanode.hostname","true");
-    configuration.set("dfs.datanode.address", "127.0.0.1:50075");
+    configuration.set("dfs.datanode.address", "sandbox.hortonworks.com:50075");
     //configuration.set("dfs.namenode.http-address","10.0.2.255:50010");
     //configuration.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
     configuration.set("dfs.replication","1");
     //configuration.set("dfs.client.use.datanode.hostname", "true");
+
     return configuration;
   }
 }
