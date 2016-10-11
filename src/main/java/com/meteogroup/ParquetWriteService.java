@@ -29,8 +29,8 @@ public class ParquetWriteService {
   }
 
 
-  public void writeExampleParquetFile() throws IOException {
-    ParquetWriter parquetWriter = initWriter(new Path("/user/maria_dev/martijn_"+System.currentTimeMillis()));
+  public void writeExampleParquetFile(String compressionType) throws IOException {
+    ParquetWriter parquetWriter = initWriter(compressionType,new Path("/user/maria_dev/martijn_"+System.currentTimeMillis()));
     Model model = new Model();
     model.name = "martijn";
     model.type="testtype";
@@ -54,12 +54,22 @@ public class ParquetWriteService {
 
 
 
-  private ParquetWriter initWriter(Path filePath) throws IOException {
+  private ParquetWriter initWriter(String compressionType,Path filePath) throws IOException {
 
     WeatherModelParquetWriter builder = new WeatherModelParquetWriter(filePath);
 
+    CompressionCodecName codecName = null;
+    if (compressionType.equalsIgnoreCase("snappy")){
+      codecName = CompressionCodecName.SNAPPY;
+    }
+    else if (compressionType.equalsIgnoreCase("gzip")){
+      codecName = CompressionCodecName.GZIP;
+    }
+    else if (compressionType.equalsIgnoreCase("lzo")){
+      codecName = CompressionCodecName.LZO;
+    }
 
-    return builder.withCompressionCodec(CompressionCodecName.SNAPPY).withPageSize(3600)
+    return builder.withCompressionCodec(codecName).withPageSize(3600)
         .withWriteMode(ParquetFileWriter.Mode.CREATE)
         .withWriterVersion(ParquetProperties.WriterVersion.PARQUET_2_0)
         .withConf(configuration)
