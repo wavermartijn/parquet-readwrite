@@ -3,7 +3,12 @@
  "name": "Model",
  "fields": [
      {"name": "name", "type": "string"},
-     {"name": "type", "type": ["string", "null"]}
-     {"name": "data", "type": "array", "items" : "float"}
+     {"name": "type", "type": ["string", "null"]},
+     {"name": "data",
+     "type": {
+            "type" : "array",
+            "items" : "float"
+             }
+     }
  ]
 }
