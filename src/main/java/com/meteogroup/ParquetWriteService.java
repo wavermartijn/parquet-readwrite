@@ -34,11 +34,45 @@ public class ParquetWriteService {
     Model model = new Model();
     model.name = "martijn";
     model.type="testtype";
-    float[] data = new float[3_000_000];
-    for(int i=0; i< data.length; i++){
-      data[i] = (float) (250 + Math.random() * 90);
+
+    for (int teller=0; teller<10; teller++ ){
+      float[] data = new float[300_000];
+      for(int i=0; i< data.length; i++){
+        data[i] = (float) (250 + Math.random() * 90);
+      }
+      if (teller==0){
+        model.data1=data;
+      }
+      else if (teller==1){
+        model.data2=data;
+      }
+      else if (teller==2){
+        model.data3=data;
+      }
+      else if (teller==3){
+        model.data4=data;
+      }
+      else if (teller==4){
+        model.data5=data;
+      }
+      else if (teller==5){
+        model.data6=data;
+      }
+      else if (teller==6){
+        model.data7=data;
+      }
+      else if (teller==7){
+        model.data8=data;
+      }
+      else if (teller==8){
+        model.data9=data;
+      }
+      else if (teller==9){
+        model.data10=data;
+      }
     }
-    model.data = data;
+
+
     parquetWriter.write(model);
     parquetWriter.close();
   }
@@ -67,6 +101,7 @@ public class ParquetWriteService {
     }
     else if (compressionType.equalsIgnoreCase("lzo")){
       codecName = CompressionCodecName.LZO;
+
     }
 
     return builder.withCompressionCodec(codecName).withPageSize(3600)

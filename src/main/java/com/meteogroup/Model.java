@@ -10,7 +10,16 @@ import org.apache.avro.generic.IndexedRecord;
 public class Model implements IndexedRecord{
   public String name;
   public String type;
-  public float[] data;
+  public float[] data1;
+  public float[] data2;
+  public float[] data3;
+  public float[] data4;
+  public float[] data5;
+  public float[] data6;
+  public float[] data7;
+  public float[] data8;
+  public float[] data9;
+  public float[] data10;
 
   private static final int NAME_POSITION = 0;
   private static final int TYPE_POSITION = 1;
@@ -30,7 +39,7 @@ public class Model implements IndexedRecord{
       return type;
     }
     else if (i==DATA_POSITION){
-      return data;
+      return data1;
     }
     return null;
   }

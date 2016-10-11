@@ -2,13 +2,67 @@
  "type": "record",
  "name": "Model",
  "fields": [
-     {"name": "name", "type": "string"},
-     {"name": "type", "type": ["string", "null"]},
-     {"name": "data",
+    {"name": "name", "type": "string"},
+    {"name": "type", "type": ["string", "null"]},
+    {"name": "data1",
+    "type": {
+        "type" : "array",
+        "items" : "float"
+         }
+    },
+    {"name": "data2",
+      "type": {
+             "type" : "array",
+             "items" : "float"
+              }
+    },
+    {"name": "data3",
      "type": {
             "type" : "array",
             "items" : "float"
              }
-     }
+    },
+    {"name": "data4",
+    "type": {
+         "type" : "array",
+         "items" : "float"
+          }
+    },
+    {"name": "data5",
+    "type": {
+          "type" : "array",
+          "items" : "float"
+           }
+    },
+    {"name": "data6",
+    "type": {
+           "type" : "array",
+           "items" : "float"
+            }
+    },
+    {"name": "data7",
+    "type": {
+        "type" : "array",
+        "items" : "float"
+         }
+    },
+    {"name": "data8",
+    "type": {
+         "type" : "array",
+         "items" : "float"
+          }
+    },
+    {"name": "data9",
+    "type": {
+          "type" : "array",
+          "items" : "float"
+           }
+    },
+    {"name": "data10",
+    "type": {
+       "type" : "array",
+       "items" : "float"
+        }
+    }
  ]
 }
