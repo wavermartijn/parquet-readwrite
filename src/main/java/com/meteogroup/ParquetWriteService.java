@@ -34,7 +34,11 @@ public class ParquetWriteService {
     Model model = new Model();
     model.name = "martijn";
     model.type="testtype";
-
+    float[] data = new float[100];
+    for(int i=0; i< data.length; i++){
+      data[i] = (float) (250 + Math.random() * 90);
+    }
+    model.data = data;
     parquetWriter.write(model);
     parquetWriter.close();
   }

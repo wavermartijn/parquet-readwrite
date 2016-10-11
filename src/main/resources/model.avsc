@@ -4,5 +4,6 @@
  "fields": [
      {"name": "name", "type": "string"},
      {"name": "type", "type": ["string", "null"]}
+     {"name": "data", "type": "array", "items" : "float"}
  ]
 }
