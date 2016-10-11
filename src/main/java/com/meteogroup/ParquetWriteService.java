@@ -59,7 +59,7 @@ public class ParquetWriteService {
     WeatherModelParquetWriter builder = new WeatherModelParquetWriter(filePath);
 
 
-    return builder.withCompressionCodec(CompressionCodecName.UNCOMPRESSED).withPageSize(3600)
+    return builder.withCompressionCodec(CompressionCodecName.SNAPPY).withPageSize(3600)
         .withWriteMode(ParquetFileWriter.Mode.CREATE)
         .withWriterVersion(ParquetProperties.WriterVersion.PARQUET_2_0)
         .withConf(configuration)
