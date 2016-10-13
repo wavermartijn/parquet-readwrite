@@ -41,6 +41,33 @@ public class Model implements IndexedRecord{
     else if (i==DATA_POSITION){
       return data1;
     }
+    else if (i==3){
+      return data2;
+    }
+    else if (i==4){
+      return data3;
+    }
+    else if (i==5){
+      return data4;
+    }
+    else if (i==6){
+      return data5;
+    }
+    else if (i==7){
+      return data6;
+    }
+    else if (i==8){
+      return data7;
+    }
+    else if (i==9){
+      return data8;
+    }
+    else if (i==10){
+      return data9;
+    }
+    else if (i==11){
+      return data10;
+    }
     return null;
   }
 
