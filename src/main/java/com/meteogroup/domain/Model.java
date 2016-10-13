@@ -1,4 +1,4 @@
-package com.meteogroup;
+package com.meteogroup.domain;
 
 import lombok.Getter;
 import lombok.Setter;

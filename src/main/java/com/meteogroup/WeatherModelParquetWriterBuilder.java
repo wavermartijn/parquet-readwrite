@@ -6,10 +6,9 @@ import org.apache.parquet.avro.AvroWriteSupport;
 import org.apache.parquet.hadoop.ParquetWriter;
 import org.apache.parquet.hadoop.api.WriteSupport;
 
-public class WeatherModelParquetWriter extends ParquetWriter.Builder {
+public class WeatherModelParquetWriterBuilder extends ParquetWriter.Builder {
 
-
-    public WeatherModelParquetWriter(Path file) {
+  public WeatherModelParquetWriterBuilder(Path file) {
     super(file);
   }
 
@@ -20,7 +19,6 @@ public class WeatherModelParquetWriter extends ParquetWriter.Builder {
   protected WriteSupport getWriteSupport(Configuration configuration) {
 
     WriteSupport avroWriteSupport = new AvroWriteSupport();
-
 
     return avroWriteSupport;
   }

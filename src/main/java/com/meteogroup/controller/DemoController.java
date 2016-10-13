@@ -1,5 +1,6 @@
-package com.meteogroup;
+package com.meteogroup.controller;
 
+import com.meteogroup.service.ParquetWriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
